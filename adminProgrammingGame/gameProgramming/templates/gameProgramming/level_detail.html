@@ -1,0 +1,134 @@
+<!-- <h1>{{ object.name }}</h1> -->
+
+{% load staticfiles %}
+
+<html>
+<head>
+	<title>Prototipo con Blocky</title>
+
+	<script src = "{% static "gameProgramming/lib/js/easeljs-0.8.2.min.js" %}"  type="text/javascript"></script>
+	<script src = "{% static "gameProgramming/lib/js/tweenjs-NEXT.combined.js" %}"  type="text/javascript"></script>
+	<link rel = "stylesheet" href = "{% static "gameProgramming/lib/css/material.min.css" %}"></link>
+	<link rel = "stylesheet" href = "{% static "gameProgramming/statics/css/styleGame.css" %}"></link>
+	<link rel = "stylesheet" href = "{% static "gameProgramming/lib/font/icons.css" %}"></link>
+	
+</head>
+<body>	
+
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <!-- <div class='modal_instruction'></div> -->
+	  <header id = "mainHeader" class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	      
+	      <span class="mdl-layout-title">Prototipo con Blocky</span>
+	      
+	      </nav>
+	    </div>
+	  </header>
+	    			
+	  
+	  <main class="mdl-layout__content">
+	    <div class="page-content">
+	    	<div class="mdl-grid">
+
+	    	<div class="mdl-cell mdl-cell--4-col">
+	    		<div id="placeToPlay">
+	    			<canvas id="c" style="
+					    width: 100%;
+					    height: 100%;">
+					</canvas>
+	    		</div>
+	    		<div id="execute">
+	    			<button id="buttonExecute" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+					  Ejecutar
+					</button>
+	    		</div>
+			</div>
+
+			<div class="mdl-cell mdl-cell--8-col">
+
+			  <div id="blocklyDiv">
+
+				
+			  </div>
+			 	
+			</div>	
+
+			
+	    </div>
+	  </main>
+	</div>
+	<div id="gameMap" style="display:none" data-map ="{{ object.gameMap }}"></div>		  
+			
+	<dialog class="mdl-dialog">
+    <h4 class="mdl-dialog__title">{{ object.name }}</h4>
+    <div class="mdl-dialog__content">
+      <p class = "instruction">
+        {{ object.instruction }}
+      </p>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button close">Cerrar</button>
+    </div>
+  </dialog>
+
+  <dialog id="winDialog" class="mdl-dialog">
+    <h5 class="mdl-dialog__title">¡Felicidades. Has completado el nivel!</h5>
+    
+    <div class="mdl-dialog__content">
+      <p class = "instruction">
+        Vas por el camino correcto, continua divirtiendote y desarrollando tus habilidades.
+      </p>
+    </div>
+
+    <div class="mdl-dialog__actions">
+    	{% if object.nextLevel %}
+      		<a class="btn_nextLevel" href="/{{ object.nextLevel.id }}/">Siguiente Nivel</a>
+	    {% else %}
+      		<a  class="btn_nextLevel"href="/">El juego Ha terminado :>D</a>
+	    {% endif %}
+    </div>
+  </dialog>
+
+  <dialog id="loseDialog" class="mdl-dialog">
+    <h5 class="mdl-dialog__title">¡No te Rindas!</h5>
+    
+    <div class="mdl-dialog__content">
+      <p class = "instruction">
+        Recuerda que debes variar la posición hacia la que se va a desplazar el personaje dede el menu desplegable. Además verifica que la cantidad de bloques sea la correcta.
+      </p>
+    </div>
+
+    
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button close">Cerrar</button>
+    </div>
+  </dialog>
+
+	 <xml id="toolbox" style="display: none">
+	 	{% for control in object.control_set.all %}
+	  		<block type="{{control.name}}"></block>
+	 	{% endfor %}
+
+	 <!--  <block type="math_number"></block>
+	  <block type="controls_if"></block>
+	  <block type="blk_movement"></block>
+   	  <block type="logic_compare"></block>
+      <block type="controls_repeat_ext"></block>
+      <block type="text"></block>
+      <block type="text_print"></block> -->
+
+	</xml>
+
+
+	<script src = "{% static "gameProgramming/lib/js/jquery-1.12.2.min.js" %}"  type="text/javascript"></script>
+	<script src="{% static "gameProgramming/lib/js/acorn_interpreter.js" %}" type="text/javascript"></script>
+	<script src="{% static "gameProgramming/lib/blocky/blockly_compressed.js" %}" type="text/javascript"></script>
+	<script src="{% static "gameProgramming/lib/blocky/blocks_compressed.js" %}" type="text/javascript"></script>
+	<script src="{% static "gameProgramming/lib/blocky/es.js" %}" type="text/javascript"></script>
+	<script src="{% static "gameProgramming/lib/blocky/javascript_compressed.js" %}" type="text/javascript"></script>
+	
+	<script src="{% static "gameProgramming/statics/js/logic.js" %}" type="text/javascript"></script>
+	<script src = "{% static "gameProgramming/lib/js/material.min.js" %}"  type="text/javascript"></script>
+</body>
+</html>

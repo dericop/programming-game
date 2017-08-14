@@ -1,0 +1,58 @@
+body{
+	position: relative;
+}
+
+.btn_nextLevel{
+	font-size: 20px;
+}
+
+.instruction{
+	font-size: 18px;
+}
+
+.mdl-dialog{
+	height:auto;
+	width: 700px;
+}
+
+.modal{
+	background-color: #e9e9e9;
+	border-radius: 10px;
+	box-shadow: 5px 5px rgba(0,0,0,0.5);
+	height: 250px;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 10%;
+	width: 40%;
+}
+
+.modal_instruction{
+	background-color: rgba(0, 0, 0, 0);
+	height: 100%;
+	z-index: 1000;
+	position: absolute;
+	width: 100%;
+}
+
+#blocklyDiv{
+	height: 90%;
+}
+
+#execute{
+	margin-top: 1em;
+}
+
+#mainHeader{
+	background-color: #4AC9D6;
+}
+
+#placeToPlay{
+	height: 420px;
+	background-color: #eee;
+}
+
+#placeToPlay iframe{
+	height: 100%;
+	width: 100%;
+}
+

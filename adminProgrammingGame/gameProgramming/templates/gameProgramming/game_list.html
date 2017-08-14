@@ -1,0 +1,84 @@
+{% load staticfiles %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src = "{% static "gameProgramming/lib/js/jquery-1.12.2.min.js" %}"  type="text/javascript"></script>
+<script src = "{% static "gameProgramming/lib/js/material.min.js" %}"  type="text/javascript"></script>
+<link rel = "stylesheet" href = "{% static "gameProgramming/lib/css/material.min.css" %}"></link>
+<link rel = "stylesheet" href = "{% static "gameProgramming/statics/css/style.css" %}"></link>
+<link rel = "stylesheet" href = "{% static "gameProgramming/lib/font/icons.css" %}"></link>
+
+<body>
+	
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header">
+	    <div class="headDiv mdl-layout__header-row">
+
+	    </div>
+	  </header>
+	  
+	  <main class="contDiv mdl-layout__content">
+	    <div class="mdl-grid">
+	    	<div class="mdl-cell mdl-cell--2-col"></div>
+	    	<div class="mdl-cell mdl-cell--8-col">
+	    		{% for game in game_list %}
+	    		
+		    		<div id="content">
+
+			    		<div class="game_content">
+			    			<div class="mdl-grid">
+			    				<div class="mdl-cell mdl-cell--1-col gc">
+			    					<div class="game_content_image image--offset">
+			    						<img src="http://icons.iconarchive.com/icons/thehoth/seo/256/seo-web-code-icon.png"></img>
+			    					</div>
+			    				</div>
+
+			    				<div class="mdl-cell mdl-cell--11-col gc">
+			    					<div class="game_data">
+					    				<span id="game_name">{{ game.name }}</span>
+
+					    				<p id="game_description">{{ game.description }}</p>
+					    			</div>
+			    				</div>
+			    			</div>
+
+			    			
+			    			
+			    		</div>
+
+			    		<div class="detail_content">
+			    			<ul class="detail_content_list">
+				    			{% for level in game.level_set.all %}
+					    			<li>
+					    			 <div class="mdl-grid">
+					    				<div class="mdl-cell mdl-cell--12-col">
+					    					<span class="icon-grin item"></span>
+					    					<a class="detail_content_name"  href="{{ level.id }}">{{ level.name }}</a>
+					    				</div>
+					    			 </div>
+					    			</li>
+				    			{% endfor %}
+			    			</ul>
+			    		</div>
+			    		<br>
+
+		    		</div>
+
+				{% endfor %}
+
+				
+
+
+	    	</div>
+  			<div class="mdl-cell mdl-cell--2-col"></div>
+
+	    	
+		</div>
+	  </main>
+	</div>
+
+    
+
+
+</body>
+
+
